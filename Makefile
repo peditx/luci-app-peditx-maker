@@ -1,15 +1,12 @@
 include $(TOPDIR)/rules.mk
 
-# Package Info
-PKG_NAME:=luci-app-peditx-maker
+PKG_NAME:=luci-app-peditxmaker
 PKG_VERSION:=1.0
 PKG_RELEASE:=1
 
-# Define build directory
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)
 
-# Package Description
-define Package/luci-app-peditx-maker
+define Package/luci-app-peditxmaker
   SECTION:=luci
   CATEGORY:=Utilities
   DEPENDS:=+luci +libuci +lucihttp
@@ -17,16 +14,20 @@ define Package/luci-app-peditx-maker
   DESCRIPTION:=A tool for installing PassWall and related scripts
 endef
 
-# Install the package files directly
-define Package/luci-app-peditx-maker/install
-	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/controller
-	$(INSTALL_DATA) ./src/controller/*.lua $(1)/usr/lib/lua/luci/controller/
-
-	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/model/cbi/peditxmaker
-	$(INSTALL_DATA) ./src/model/cbi/*.lua $(1)/usr/lib/lua/luci/model/cbi/peditxmaker/
-
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_BIN) ./src/bin/* $(1)/usr/bin/
+define Package/luci-app-peditxmaker/compile
+	$(CP) ./files/* $(1)/
 endef
 
-$(eval $(call BuildPackage,luci-app-peditx-maker))
+# Define installation paths
+define Package/luci-app-peditxmaker/install
+	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/controller
+	$(INSTALL_DATA) ./files/controller/*.lua $(1)/usr/lib/lua/luci/controller/
+
+	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/model/cbi/peditxmaker
+	$(INSTALL_DATA) ./files/model/cbi/*.lua $(1)/usr/lib/lua/luci/model/cbi/peditxmaker/
+
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(INSTALL_BIN) ./files/bin/*.sh $(1)/usr/bin/
+endef
+
+$(eval $(call BuildPackage,luci-app-peditxmaker))
