@@ -1,28 +1,23 @@
 include $(TOPDIR)/rules.mk
 
 # Package Info
-PKG_NAME:=luci-app-peditxmaker
+PKG_NAME:=luci-app-peditx-maker
 PKG_VERSION:=1.0
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
-include $(INCLUDE_DIR)/package.mk
+PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)
 
 # Package Description
 define Package/luci-app-peditxmaker
-  SECTION:=admin
-  CATEGORY:=LuCI
-  SUBMENU:=3. Applications
+  SECTION:=luci
+  CATEGORY:=Utilities
+  DEPENDS:=+luci +libuci +lucihttp
   TITLE:=PeDitX-Maker
-  DEPENDS:=+luci-base
+  DESCRIPTION:=A tool for installing PassWall and related scripts
 endef
 
-define Package/luci-app-peditxmaker/description
-  A LuCI application for installing PassWall2.
-endef
-
-# Prepare the package
-define Build/Prepare
-	$(CP) ./src/* $(1)/
+define Package/luci-app-peditxmaker/compile
+	$(CP) ./files/* $(1)/  # Copy all necessary files from './files' to the package directory
 endef
 
 # Install the package
