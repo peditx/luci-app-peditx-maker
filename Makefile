@@ -1,14 +1,14 @@
 include $(TOPDIR)/rules.mk
 
-# اطلاعات پکیج
-PKG_NAME:=peditxmaker
+# Package Info
+PKG_NAME:=luci-app-peditxmaker
 PKG_VERSION:=1.0
 PKG_RELEASE:=1
 
 include $(INCLUDE_DIR)/package.mk
 
-# توضیحات پکیج
-define Package/peditxmaker
+# Package Description
+define Package/luci-app-peditxmaker
   SECTION:=admin
   CATEGORY:=LuCI
   SUBMENU:=3. Applications
@@ -16,18 +16,17 @@ define Package/peditxmaker
   DEPENDS:=+luci-base
 endef
 
-# توضیحات نصب
-define Package/peditxmaker/description
+define Package/luci-app-peditxmaker/description
   A LuCI application for installing PassWall2.
 endef
 
-# اسکریپت نصب
+# Prepare the package
 define Build/Prepare
 	$(CP) ./src/* $(1)/
 endef
 
-# دستورات نصب
-define Package/peditxmaker/install
+# Install the package
+define Package/luci-app-peditxmaker/install
 	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/controller
 	$(INSTALL_DATA) ./src/controller/*.lua $(1)/usr/lib/lua/luci/controller/
 
@@ -38,5 +37,4 @@ define Package/peditxmaker/install
 	$(INSTALL_BIN) ./src/bin/* $(1)/usr/bin/
 endef
 
-# اضافه کردن به Makefile اصلی
-$(eval $(call BuildPackage,peditxmaker))
+$(eval $(call BuildPackage,luci-app-peditxmaker))
