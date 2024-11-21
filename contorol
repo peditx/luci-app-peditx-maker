@@ -1,0 +1,6 @@
+Package: luci-app-peditxmaker
+Version: 1.0-1
+Architecture: all
+Maintainer: PeDitX <pedram.ale@me.com>
+Depends: +luci +libuci +lucihttp
+Description: A tool for installing PassWall and related scripts
