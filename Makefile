@@ -8,7 +8,7 @@ PKG_RELEASE:=1
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)
 
 # Package Description
-define Package/luci-app-peditxmaker
+define Package/luci-app-peditx-maker
   SECTION:=luci
   CATEGORY:=Utilities
   DEPENDS:=+luci +libuci +lucihttp
@@ -17,11 +17,11 @@ define Package/luci-app-peditxmaker
 endef
 
 # Define the 'compile' target (empty in this case)
-define Package/luci-app-peditxmaker/compile
+define Package/luci-app-peditx-maker/compile
 endef
 
 # Install the package
-define Package/luci-app-peditxmaker/install
+define Package/luci-app-peditx-maker/install
 	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/controller
 	$(INSTALL_DATA) ./src/controller/*.lua $(1)/usr/lib/lua/luci/controller/
 
@@ -32,4 +32,4 @@ define Package/luci-app-peditxmaker/install
 	$(INSTALL_BIN) ./src/bin/* $(1)/usr/bin/
 endef
 
-$(eval $(call BuildPackage,luci-app-peditxmaker))
+$(eval $(call BuildPackage,luci-app-peditx-maker))
