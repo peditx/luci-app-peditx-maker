@@ -1,9 +1,9 @@
 include $(TOPDIR)/rules.mk
 
 # Package Info
-PKG_NAME:=luci-app-peditx-maker
+PKG_NAME:=luci-app-peditxmaker
 PKG_VERSION:=1.0
-PKG_RELEASE:=2
+PKG_RELEASE:=1
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)
 
@@ -16,8 +16,8 @@ define Package/luci-app-peditxmaker
   DESCRIPTION:=A tool for installing PassWall and related scripts
 endef
 
+# Define the 'compile' target (empty in this case)
 define Package/luci-app-peditxmaker/compile
-	$(CP) ./files/* $(1)/  # Copy all necessary files from './files' to the package directory
 endef
 
 # Install the package
