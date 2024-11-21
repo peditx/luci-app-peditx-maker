@@ -14,11 +14,12 @@ define Package/luci-app-peditxmaker
   DESCRIPTION:=A tool for installing PassWall and related scripts
 endef
 
+# Copy the files
 define Package/luci-app-peditxmaker/compile
 	$(CP) ./files/* $(1)/
 endef
 
-# Define installation paths
+# Install the package files into the target system
 define Package/luci-app-peditxmaker/install
 	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/controller
 	$(INSTALL_DATA) ./files/controller/*.lua $(1)/usr/lib/lua/luci/controller/
