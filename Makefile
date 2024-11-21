@@ -5,6 +5,7 @@ PKG_NAME:=luci-app-peditx-maker
 PKG_VERSION:=1.0
 PKG_RELEASE:=1
 
+# Define build directory
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)
 
 # Package Description
@@ -16,7 +17,7 @@ define Package/luci-app-peditx-maker
   DESCRIPTION:=A tool for installing PassWall and related scripts
 endef
 
-# Install the package (no need for compile target)
+# Install the package files directly
 define Package/luci-app-peditx-maker/install
 	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/controller
 	$(INSTALL_DATA) ./src/controller/*.lua $(1)/usr/lib/lua/luci/controller/
