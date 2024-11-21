@@ -8,7 +8,7 @@ PKG_RELEASE:=1
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)
 
 # Package Description
-define Package/luci-app-peditx-maker
+define Package/luci-app-peditxmaker
   SECTION:=luci
   CATEGORY:=Utilities
   DEPENDS:=+luci +libuci +lucihttp
@@ -16,7 +16,7 @@ define Package/luci-app-peditx-maker
   DESCRIPTION:=A tool for installing PassWall and related scripts
 endef
 
-# Define the 'compile' target (empty in this case)
+# Since no compilation is needed, define an empty compile target
 define Package/luci-app-peditx-maker/compile
 endef
 
