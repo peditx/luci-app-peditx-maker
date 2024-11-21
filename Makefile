@@ -14,21 +14,8 @@ define Package/luci-app-peditxmaker
   DESCRIPTION:=A tool for installing PassWall and related scripts
 endef
 
-# Copy the files
 define Package/luci-app-peditxmaker/compile
 	$(CP) ./files/* $(1)/
-endef
-
-# Install the package files into the target system
-define Package/luci-app-peditxmaker/install
-	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/controller
-	$(INSTALL_DATA) ./files/controller/*.lua $(1)/usr/lib/lua/luci/controller/
-
-	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/model/cbi/peditxmaker
-	$(INSTALL_DATA) ./files/model/cbi/*.lua $(1)/usr/lib/lua/luci/model/cbi/peditxmaker/
-
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_BIN) ./files/bin/*.sh $(1)/usr/bin/
 endef
 
 $(eval $(call BuildPackage,luci-app-peditxmaker))
