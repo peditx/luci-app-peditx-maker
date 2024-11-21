@@ -1,0 +1,26 @@
+#!/bin/sh /etc/rc.common
+
+# Description: Start/Stop PeDitX-Maker service
+# Default: off
+
+START=99
+STOP=15
+
+start() {
+    echo "Starting PeDitX-Maker..."
+    # دستورات مربوط به راه‌اندازی سرویس را اینجا وارد کنید
+    # مثلا اجرای اسکریپت‌های نصب یا راه‌اندازی سرویس
+    # می‌توانید از دستورات مانند `sh /tmp/your-script.sh` استفاده کنید
+    luci.sys.call("sh /tmp/your-script.sh")
+}
+
+stop() {
+    echo "Stopping PeDitX-Maker..."
+    # دستورات برای توقف سرویس
+    # این قسمت باید شامل دستورات مربوط به متوقف کردن سرویس‌ها باشد
+}
+
+restart() {
+    stop
+    start
+}
